@@ -9,7 +9,7 @@ Make sure to download the latest versions of any slides.
 
 ## presentations
 
-- WebRTC ( [_slides_]() | [_description_]() )
+- WebRTC ( [_slides_]() | [_description_]() ) (soon)
   - Oct 2023 (Aban 1402) at __CE department, Amirkabir University of Technology__
-- Intro to Cloud Computing ( [_slides_]() | [_description_]() ) 
+- Intro to Cloud Computing ( [_slides_]() | [_description_]() ) (soon)
   - Oct 2023 (Aban 1402) at __CS department, Amirkabir University of Technology__
