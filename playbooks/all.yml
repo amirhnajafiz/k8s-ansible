@@ -1,0 +1,5 @@
+---
+
+- import_playbook: settings.yml
+- import_playbook: backend.yml
+- import_playbook: webapp.yml

@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  roles:
+    - role: base
+      tags:
+        - base
+        - config
+    - role: git
+      tags:
+        - git
+        - config

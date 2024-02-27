@@ -1,0 +1,10 @@
+---
+
+- hosts: backend
+  roles:
+    - role: docker
+      tags:
+        - docker
+    - role: golang
+      tags:
+        - golang
