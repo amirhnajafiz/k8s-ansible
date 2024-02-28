@@ -1,0 +1,6 @@
+[user]
+{% if len(GITHUB_USER) > 0 %}
+    name = {{ GITHUB_USER }}
+{% elif len(GITLAB_USER) > 0 %}
+    name = {{ GITLAB_TOKEN }}
+{% endif %}
