@@ -3,5 +3,3 @@
 - hosts: webapp
   roles:
     - role: nginx
-      tags: 
-        - nginx
