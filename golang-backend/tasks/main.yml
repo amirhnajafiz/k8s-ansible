@@ -1,0 +1,12 @@
+---
+
+- name: Install git cli
+  ansible.builtin.apt:
+    name: git
+    state: present
+    update_cache: yes
+
+- name: Get updated files from git repository 
+  git: 
+    repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/privrepo.git"
+    dest: /tmp
