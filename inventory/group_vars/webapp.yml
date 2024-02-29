@@ -1,3 +1,0 @@
-# group variables for webapp group
-# includes nginx version
-NGINX_VERSION: "2.0.1"

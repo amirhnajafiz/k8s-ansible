@@ -1,6 +1,0 @@
-# group variables for backend group
-# includes base docker version and docker settings like
-# default registery and deamon port
-DOCKER_VERSION: "3.9"
-DOCKER_DEAMON_PORT: 8090
-DOCKER_DEFAULT_REGISTERY: "registery.docker.hub"
