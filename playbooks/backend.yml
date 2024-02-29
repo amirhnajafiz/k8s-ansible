@@ -1,6 +1,0 @@
----
-
-- hosts: backend
-  roles:
-    - role: docker
-    - role: golang
