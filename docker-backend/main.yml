@@ -1,12 +1,51 @@
 ---
 
-- name: Install git cli
-  ansible.builtin.apt:
-    name: git
-    state: present
-    update_cache: yes
+- hosts: all
+  become: true
+  vars:
+    DOCKER_DEFAULT_STORAGE: "20Gb"
+    DOCKER_REGISTERIES:
+      - "https://index.docker.io/v1/"
+    
+  tasks:
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+    
+    - name: Install required system packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+          - python3-pip
+          - virtualenv
+          - python3-setuptools
+        state: latest
+        update_cache: true
+    
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
 
-- name: Get updated files from git repository 
-  git: 
-    repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/privrepo.git"
-    dest: /tmp
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+    
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+    
+    - name: Install Docker
+      apt:
+        name: docker
+        state: latest
+        update_cache: true
+    

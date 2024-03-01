@@ -1,7 +1,7 @@
 {
 	"auths": {
         {% for registery in DOCKER_REGISTERIES %}
-        "{{ registery }}": {},
+        {{ registery }}: {},
         {% endfor %}
 	},
 	"credsStore": "desktop"
