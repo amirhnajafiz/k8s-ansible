@@ -1,0 +1,13 @@
+---
+
+# by using this playbook, you will be able to
+# setup git cli on the target hosts
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Install git cli
+      apt:
+        name: git
+        state: present
+        update_cache: yes
