@@ -43,3 +43,16 @@
         state: latest
         update_cache: true
     
+    - name: Create docker config.json
+      template:
+        src: templates/etc/docker/config.json.j2
+        dest: /etc/docker/config.json
+        owner: root
+        mode: '0644'
+    
+    - name: Create docker deamon.json
+      template:
+        src: templates/etc/docker/deamon.json.j2
+        dest: /etc/docker/deamon.json
+        owner: root
+        mode: '0644'
