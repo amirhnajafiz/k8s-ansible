@@ -1,0 +1,13 @@
+---
+
+# by using this playbook, you will be able to
+# setup git cli on the target hosts
+
+- hosts: all
+  become: true
+  vars:
+    GOVERSION: 1.22.0
+  tasks:
+    - name: Download Go install package
+      shell: |
+        curl -OL https://go.dev/dl/go"$(echo $XGOVERSION)".linux-amd64.tar.gz
