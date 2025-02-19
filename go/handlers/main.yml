@@ -1,5 +1,0 @@
----
-
-- name: restart profile source
-  shell: |
-    source $HOME/.profile
