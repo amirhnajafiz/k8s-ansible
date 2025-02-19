@@ -1,0 +1,10 @@
+---
+# Checking all nodes access and health
+- name: Health check
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Ping nodes
+      ansible.builtin.ping:
+
