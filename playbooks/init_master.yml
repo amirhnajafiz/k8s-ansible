@@ -1,0 +1,22 @@
+- name: Initialize Kubernetes Control Plane
+  hosts: control_plane
+  become: yes
+  tasks:
+    - name: Initialize Kubernetes Cluster
+      command: kubeadm init --pod-network-cidr=192.168.0.0/16 --cri-socket=unix:///run/containerd/containerd.sock
+
+    - name: Create Kubernetes Config Directory
+      file:
+        path: $HOME/.kube
+        state: directory
+        mode: '0755'
+
+    - name: Copy kubeconfig
+      command: cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+
+    - name: Set Permissions for kubeconfig
+      command: chown $(id -u):$(id -g) $HOME/.kube/config
+
+    - name: Install Calico Network Plugin
+      command: kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+
