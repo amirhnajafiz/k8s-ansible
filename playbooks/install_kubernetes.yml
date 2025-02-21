@@ -2,14 +2,6 @@
   hosts: kubernetes
   become: yes
   tasks:
-    - name: Add Kubernetes APT repository key
-      shell: curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-
-    - name: Add Kubernetes APT repository
-      apt_repository:
-        repo: "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /"
-        state: present
-
     - name: Install Kubernetes packages
       apt:
         name:
@@ -26,11 +18,10 @@
       copy:
         dest: /etc/default/kubelet
         content: |
-          KUBELET_EXTRA_ARGS="--container-runtime=remote --container-runtime-endpoint=unix:///run/containerd/containerd.sock"
+          KUBELET_EXTRA_ARGS="--container-runtime-endpoint=unix:///run/containerd/containerd.sock"
 
     - name: Restart Kubelet
       systemd:
         name: kubelet
         state: restarted
         enabled: yes
-
