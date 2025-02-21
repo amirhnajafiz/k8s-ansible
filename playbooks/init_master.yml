@@ -19,4 +19,3 @@
 
     - name: Install Calico Network Plugin
       command: kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
-

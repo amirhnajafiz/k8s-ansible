@@ -16,4 +16,3 @@
   tasks:
     - name: Join Kubernetes Cluster
       command: "{{ hostvars['master'].kube_join_command }}"
-

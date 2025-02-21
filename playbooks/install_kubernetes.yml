@@ -14,6 +14,16 @@
     - name: Hold Kubernetes packages at current version
       command: apt-mark hold kubelet kubeadm kubectl
 
+    - name: Disable swap (required for Kubernetes)
+      command: swapoff -a
+      when: ansible_swaptotal_mb > 0
+
+    - name: Remove swap entry from fstab
+      replace:
+        path: /etc/fstab
+        regexp: '(^.*swap.*$)'
+        replace: '# \1'
+
     - name: Restart Kubelet
       systemd:
         name: kubelet
