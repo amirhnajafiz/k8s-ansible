@@ -14,12 +14,6 @@
     - name: Hold Kubernetes packages at current version
       command: apt-mark hold kubelet kubeadm kubectl
 
-    - name: Configure Kubelet to Use Containerd
-      copy:
-        dest: /etc/default/kubelet
-        content: |
-          KUBELET_EXTRA_ARGS="--container-runtime-endpoint=unix:///run/containerd/containerd.sock"
-
     - name: Restart Kubelet
       systemd:
         name: kubelet
