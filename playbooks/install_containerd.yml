@@ -26,7 +26,7 @@
 
     - name: Copy Containerd config
       copy:
-        src: ../templates/etc/containerd/config.toml
+        src: ../templates/etc/containerd/config.toml.js
         dest: /etc/containerd/config.toml
 
     - name: Set systemd cgroup driver in Containerd
@@ -34,6 +34,10 @@
         path: /etc/containerd/config.toml
         regexp: 'SystemdCgroup = false'
         replace: 'SystemdCgroup = true'
+
+    - name: Reload systemd
+      systemd:
+        daemon_reload: yes
 
     - name: Restart Containerd
       systemd:
