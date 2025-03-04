@@ -16,5 +16,8 @@
   hosts: workers
   become: yes
   tasks:
+    - name: Remove Existing Kubernetes Configuration
+      command: kubeadm reset -f
+
     - name: Join Kubernetes Cluster
       command: "{{ hostvars['master'].kube_join_command }}"

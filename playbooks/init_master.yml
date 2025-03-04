@@ -4,6 +4,9 @@
   hosts: control_plane
   become: yes
   tasks:
+    - name: Remove Existing Kubernetes Configuration
+      command: kubeadm reset -f
+  
     - name: Initialize Kubernetes Cluster
       command: kubeadm init --pod-network-cidr=192.168.0.0/16 --cri-socket=unix:///run/containerd/containerd.sock
 
