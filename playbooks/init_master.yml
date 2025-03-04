@@ -1,3 +1,5 @@
+---
+# Initialize Kubernetes Control Plane
 - name: Initialize Kubernetes Control Plane
   hosts: control_plane
   become: yes
