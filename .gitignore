@@ -9,8 +9,11 @@
 __pycache__/
 vendor/
 
+# Logs
+*.log
+logs/
+
 # Secrets
 inventory.ini
 inventory.yml
 inventory.yaml
-
