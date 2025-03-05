@@ -1,6 +1,6 @@
 ---
 # Add APT keys
-- name: Install Kubernetes Components
+- name: Add APT keys
   hosts: kubernetes
   become: yes
   tasks:
